@@ -1,0 +1,6 @@
+- Adapter : 适配器模式
+- Command : 命令模式
+- DependencyInjection ：控制反转&&依赖注入
+- Factory : 工厂模式
+- Observer : 观察者模式
+- SingleTon : 单例模式
