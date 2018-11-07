@@ -1,6 +1,6 @@
 <?php
 //获取当前用户ip
-function getip() {
+function getIpOne() {
     $unknown = 'unknown';
     if(isset($_SERVER['HTTP_X_FORWARDED_FOR']) && $_SERVER['HTTP_X_FORWARDED_FOR'] && strcasecmp($_SERVER['HTTP_X_FORWARDED_FOR'], $unknown)){
         $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
@@ -25,10 +25,32 @@ function getip() {
     * @return: string
     * USAGE: php -f taobao_ip.php 121.207.247.202
     **/
-function getIpInfo($ip){
+function getIpTwo($ip){
     $url='http://ip.taobao.com/service/getIpInfo.php?ip='.$ip;
     $result = file_get_contents($url);
     $result = json_decode($result,true);
     if($result['code']!==0 || !is_array($result['data'])) return false;
     return $result['data'];
+}
+
+function getIpThree() {
+    if (getenv('HTTP_CLIENT_IP')) {
+        $ip = getenv('HTTP_CLIENT_IP');
+    }
+    elseif (getenv('HTTP_X_FORWARDED_FOR')) { //获取客户端用代理服务器访问时的真实ip 地址
+        $ip = getenv('HTTP_X_FORWARDED_FOR');
+    }
+    elseif (getenv('HTTP_X_FORWARDED')) {
+        $ip = getenv('HTTP_X_FORWARDED');
+    }
+    elseif (getenv('HTTP_FORWARDED_FOR')) {
+        $ip = getenv('HTTP_FORWARDED_FOR');
+    }
+    elseif (getenv('HTTP_FORWARDED')) {
+        $ip = getenv('HTTP_FORWARDED');
+    }
+    else {
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
 }
