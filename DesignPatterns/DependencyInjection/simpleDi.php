@@ -1,6 +1,6 @@
 <?php
 /*
-*	简易loC容器练习
+*	简易ioC容器练习
 *
  * 通过注册、绑定的方式向容器中添加一段可以被执行的回调（可以是匿名函数、非匿名函数、类的方法）作为生产一个类的实例的 脚本 ，只有在真正的 生产（make） 操作被调用执行时，才会触发
 */
@@ -13,7 +13,7 @@ class Red implements ColorModuleInterface
 {
     public function show(array $target)
     {
-        echo "This loC is Red<br>\n";
+        echo "This ioC is Red<br>\n";
     }
 }
 
@@ -21,7 +21,7 @@ class Blue implements ColorModuleInterface
 {
     public function show(array $target)
     {
-        echo "This loC is Blue<br>\n";
+        echo "This ioC is Blue<br>\n";
     }
 }
 
